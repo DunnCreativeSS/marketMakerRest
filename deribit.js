@@ -134,7 +134,7 @@ async function doRest(req, res) {
         direction: direction,
         amountPotential: amountPotential,
         severity: severity,
-        cancelOpp: limitOrMarket,
+        cancelOpp: cancelOpp,
         stopOppOrders: stopOppOrders,
         postOnly: req.body.postOnly
     }
