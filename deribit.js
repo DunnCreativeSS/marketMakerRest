@@ -148,6 +148,7 @@ async function doRest(req, res) {
             } else if (stopOppOrders == 'false') {
                 gogosell = true;
             }
+            if (amountPotential != 'false'){
             var vol = 0;
             var contracts = 0;
             for (var i = 0; i <= amountPotential; i = i + 0.5) {
@@ -188,12 +189,14 @@ async function doRest(req, res) {
                     }
                 })
             }
+        }
         } else if (direction == 'sell') {
             if (stopOppOrders == 'true') {
                 gogobuy = false;
             } else if (stopOppOrders == 'false') {
                 gogobuy = true;
             }
+            if (amountPotential != 'false'){
             var vol = 0;
             var contracts = 0;
             for (var i = 0; i <= amountPotential; i = i + 0.5) {
@@ -234,6 +237,7 @@ async function doRest(req, res) {
                     }
                 })
             }
+        }
         }
     }
 }
