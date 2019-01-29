@@ -329,11 +329,11 @@ setInterval(async function() {
                 for (var r in result) {
                     for (var a in result[r]) {
                         if (result[r][a].direction == 'sell' && gogobuy && gogobb && gogov) {
-                            restClient.buy('BTC-PERPETUAL', -1 * result[r][a].size * dirBuyMult, lb, postOnly).then((result) => {
+                            restClient.buy('BTC-PERPETUAL', Math.floor(-1 * result[r][a].size * dirBuyMult), lb, postOnly).then((result) => {
 
                             });
                         } else if (gogosell && result[r][a].direction == 'buy' && gogobb && gogov) {
-                            restClient.sell('BTC-PERPETUAL', 1 * result[r][a].size * dirSellMult, lb, postOnly).then((result) => {
+                            restClient.sell('BTC-PERPETUAL', Math.floor(1 * result[r][a].size * dirSellMult), lb, postOnly).then((result) => {
 
                             });
                         }
@@ -362,10 +362,10 @@ setInterval(async function() {
                                 pnlclosed += -1 * (100 * (1 - (btcNow / startBtc))).toPrecision(4);
                                 if (result[r][a].direction == 'sell') {
 
-                                    var o = await exchange.createMarketBuyOrder('BTC-PERPETUAL', -1 * result[r][a].size * dirBuyMult);
+                                    var o = await exchange.createMarketBuyOrder('BTC-PERPETUAL', Math.floor(-1 * result[r][a].size * dirBuyMult));
                                     console.log(o)
                                 } else if (result[r][a].direction == 'buy') {
-                                    var o = exchange.createMarketSellOrder('BTC-PERPETUAL', 1 * result[r][a].size * dirSellMult);
+                                    var o = exchange.createMarketSellOrder('BTC-PERPETUAL', Math.floor(1 * result[r][a].size) * dirSellMult);
                                     console.log(o)
                                 }
                             }
@@ -548,29 +548,29 @@ setInterval(async function() {
                         //////console.log('20000')
                         if (result[r][a].direction == 'sell' && gogobuy && gogobb && gogov) {
                             //////console.log('buybuy')
-                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4) * dirBuyMult, ha - 1.5, postOnly).then((result) => {
+                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4 * dirBuyMult), ha - 1.5, postOnly).then((result) => {
                                 //////console.log(result);
                             });
-                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4) * dirBuyMult, ha - 1.0, postOnly).then((result) => {
+                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4 * dirBuyMult), ha - 1.0, postOnly).then((result) => {
                                 //////console.log(result);
                             });
 
-                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4) * dirBuyMult, ha, postOnly).then((result) => {
+                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4 * dirBuyMult), ha, postOnly).then((result) => {
                                 //////console.log(result);
                             });
 
                             //////console.log(result);
                         } else if (result[r][a].direction == 'buy' && gogosell && gogobb && gogov) {
                             //////console.log('sellsell')
-                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4) * dirSellMult, lb + 1.5, postOnly).then((result) => {
+                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4 * dirSellMult), lb + 1.5, postOnly).then((result) => {
                                 //////console.log(result);
                             });
 
-                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4) * dirSellMult, lb + 1.0, postOnly).then((result) => {
+                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4 * dirSellMult), lb + 1.0, postOnly).then((result) => {
                                 //////console.log(result);
                             });
 
-                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4) * dirSellMult, lb, postOnly, ).then((result) => {
+                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4 * dirSellMult), lb, postOnly, ).then((result) => {
                                 //////console.log(result);
                             });
                         }
@@ -586,27 +586,27 @@ setInterval(async function() {
                         //////console.log('20000')
                         if (result[r][a].direction == 'sell' && gogobuy && gogobb && gogov) {
                             //////console.log('buybuy')
-                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4) * dirBuyMult, lb - 1.5, postOnly).then((result) => {
+                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4 * dirBuyMult), lb - 1.5, postOnly).then((result) => {
                                 //////console.log(result);
                                 //////console.log(result);
                             });
-                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4) * dirBuyMult, lb - 1.0, postOnly).then((result) => {
+                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4 * dirBuyMult), lb - 1.0, postOnly).then((result) => {
                                 //////console.log(result);
                                 //////console.log(result);
                             });
-                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4) * dirBuyMult, lb - 0.5, postOnly).then((result) => {
+                            restClient.buy('BTC-PERPETUAL', -1 * Math.floor(s / 4 * dirBuyMult), lb - 0.5, postOnly).then((result) => {
                                 //////console.log(result);
                                 //////console.log(result);
                             });
                         } else if (result[r][a].direction == 'buy' && gogosell && gogobb && gogov) {
                             //////console.log('sellsell')
-                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4) * dirSellMult, ha + 1.5, postOnly).then((result) => {
+                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4 * dirSellMult), ha + 1.5, postOnly).then((result) => {
                                 //////console.log(result);
                             });
-                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4) * dirSellMult, ha + 1.0, postOnly).then((result) => {
+                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4 * dirSellMult), ha + 1.0, postOnly).then((result) => {
                                 //////console.log(result);
                             });
-                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4) * dirSellMult, ha + 0.5, postOnly).then((result) => {
+                            restClient.sell('BTC-PERPETUAL', Math.floor(s / 4 * dirSellMult), ha + 0.5, postOnly).then((result) => {
                                 //////console.log(result);
                             });
                         }
@@ -696,11 +696,11 @@ setInterval(function() {
             if (go) {
                 if (gogoFour < 10 && gogosell && gogobb && gogov) {
                     gogoFour++;
-                    restClient.sell('BTC-PERPETUAL', tar * dirSellMult, ha, postOnly).then((result) => {});
+                    restClient.sell('BTC-PERPETUAL', Math.floor(tar * dirSellMult), ha, postOnly).then((result) => {});
                 }
                 if (gogoFour < 10 && gogobuy && gogobb && gogov) {
                     gogoFour++;
-                    restClient.buy('BTC-PERPETUAL', tar * dirBuyMult, lb, postOnly).then((result) => {});
+                    restClient.buy('BTC-PERPETUAL', Math.floor(tar * dirBuyMult), lb, postOnly).then((result) => {});
 
                 }
             }
@@ -782,10 +782,10 @@ async function liquidate() {
                         pnlclosed += -1 * (100 * (1 - (btcNow / startBtc))).toPrecision(4);
                         if (result[r][a].direction == 'sell') {
 
-                            var o = await exchange.createMarketBuyOrder('BTC-PERPETUAL', -1 * result[r][a].size * dirBuyMult);
+                            var o = await exchange.createMarketBuyOrder('BTC-PERPETUAL', Math.floor(-1 * result[r][a].size) * dirBuyMult);
                             console.log(o)
                         } else if (result[r][a].direction == 'buy') {
-                            var o = exchange.createMarketSellOrder('BTC-PERPETUAL', 1 * result[r][a].size * dirSellMult);
+                            var o = exchange.createMarketSellOrder('BTC-PERPETUAL', Math.floor(1 * result[r][a].size) * dirSellMult);
                             console.log(o)
                         }
                     }
@@ -906,7 +906,7 @@ setInterval(function() {
         gogoFour++;
         can = true;
         setTimeout(function() {
-            restClient.buy('BTC-PERPETUAL', tar * dirBuyMult, lb, postOnly).then((result) => {
+            restClient.buy('BTC-PERPETUAL', Math.floor(tar * dirBuyMult), lb, postOnly).then((result) => {
                 buying = lb;
                 count++;
             });
@@ -919,7 +919,7 @@ setInterval(function() {
         gogoFour++;
         can = true;
         setTimeout(function() {
-            restClient.sell('BTC-PERPETUAL', tar * dirSellMult, ha, postOnly).then((result) => {
+            restClient.sell('BTC-PERPETUAL', Math.floor(tar * dirSellMult), ha, postOnly).then((result) => {
                 selling = ha;
             });
         }, 800);
